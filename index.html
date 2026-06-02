@@ -9,22 +9,26 @@
 
 body{
 margin:0;
-font-family:sans-serif;
+font-family:'Pretendard',sans-serif;
 background:#eef3fb;
 text-align:center;
 }
+
+/* 상단 */
 
 .header{
 background:white;
 padding:20px;
 font-size:40px;
-font-weight:bold;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
+font-weight:900;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
 }
 
 .blue{
 color:#0A57FF;
 }
+
+/* 화면 */
 
 .screen{
 display:none;
@@ -35,15 +39,19 @@ padding:20px;
 display:block;
 }
 
+/* 카드 */
+
 .card{
 background:white;
-padding:30px;
+padding:25px;
 border-radius:25px;
-max-width:420px;
+max-width:430px;
 margin:auto;
 margin-top:25px;
 box-shadow:0 5px 20px rgba(0,0,0,0.1);
 }
+
+/* 토글 */
 
 .fake-toggle{
 width:130px;
@@ -68,7 +76,7 @@ top:5px;
 .toggle-on{
 width:130px;
 height:65px;
-background:#1cc95b;
+background:#16c35b;
 border-radius:50px;
 margin:auto;
 position:relative;
@@ -84,22 +92,25 @@ right:5px;
 top:5px;
 }
 
+/* 텍스트 */
+
 .off-text{
-margin-top:15px;
 font-size:30px;
 font-weight:bold;
-color:#999;
+margin-top:15px;
+color:#888;
 }
 
 .on-text{
-margin-top:15px;
 font-size:30px;
 font-weight:bold;
-color:#1cc95b;
+margin-top:15px;
+color:#16c35b;
 }
 
+/* 버튼 */
+
 .main-btn{
-margin-top:20px;
 width:100%;
 padding:18px;
 border:none;
@@ -108,15 +119,31 @@ background:#0A57FF;
 color:white;
 font-size:22px;
 font-weight:bold;
+margin-top:20px;
 cursor:pointer;
 }
 
-.menu{
+.back-btn{
 width:100%;
-padding:22px;
-margin-bottom:15px;
+padding:16px;
 border:none;
 border-radius:18px;
+background:#dfe5ef;
+color:#333;
+font-size:20px;
+font-weight:bold;
+margin-top:15px;
+cursor:pointer;
+}
+
+/* 메뉴 */
+
+.menu{
+width:100%;
+padding:20px;
+border:none;
+border-radius:18px;
+margin-bottom:15px;
 font-size:22px;
 font-weight:bold;
 display:flex;
@@ -142,74 +169,94 @@ color:#0A57FF;
 }
 
 .menu2{
-background:#fff3e2;
-color:#ff8a00;
+background:#fff4e3;
+color:#ff8c00;
 }
 
 .menu3{
-background:#ffeaea;
-color:#ff3b3b;
+background:#fff0cf;
+color:#cc9900;
 }
 
 .menu4{
-background:#eef9ff;
-color:#00a2ff;
+background:#e9fff3;
+color:#009966;
 }
 
 .menu5{
-background:#eefcef;
-color:#00a651;
+background:#eef5ff;
+color:#3b5cff;
 }
+
+/* SOS */
 
 .sos-btn{
 width:100%;
-padding:24px;
+padding:22px;
 border:none;
 border-radius:20px;
-background:red;
+background:#ff3b30;
 color:white;
 font-size:28px;
 font-weight:bold;
 cursor:pointer;
 }
 
+/* 위치 */
+
 .location{
 background:#f1f7ff;
 padding:20px;
 border-radius:20px;
 margin-top:20px;
-font-size:24px;
+font-size:22px;
+line-height:1.8;
 }
 
-.warning-box{
-background:#ffd84d;
-padding:20px;
-border-radius:20px;
-font-size:48px;
-font-weight:bold;
-margin-top:20px;
-}
+/* 정보 */
 
 .info{
 background:#eef5ff;
 padding:20px;
 border-radius:20px;
 margin-top:20px;
-font-size:22px;
+font-size:21px;
 line-height:2;
 text-align:left;
 }
 
-.danger{
-background:#fff0f0;
+/* 위험 */
+
+.warning-red{
+background:linear-gradient(to right,#ff4b4b,#d90000);
+color:white;
 padding:20px;
 border-radius:20px;
-margin-top:20px;
-font-size:22px;
+font-size:40px;
 font-weight:bold;
-color:red;
-line-height:1.8;
+margin-top:20px;
 }
+
+.warning-yellow{
+background:#ffd84d;
+padding:20px;
+border-radius:20px;
+font-size:40px;
+font-weight:bold;
+margin-top:20px;
+}
+
+.warning-green{
+background:#16a765;
+color:white;
+padding:20px;
+border-radius:20px;
+font-size:40px;
+font-weight:bold;
+margin-top:20px;
+}
+
+/* 음성 */
 
 .voice-icon{
 font-size:90px;
@@ -243,11 +290,15 @@ SAFETY OFF
 안전을 켜시겠습니까?
 </p>
 
-<button class="main-btn" onclick="startSafety()">
+<button class="main-btn"
+onclick="goScreen('screen2')">
+
 ON 시작하기
+
 </button>
 
 </div>
+
 </div>
 
 <!-- STEP2 -->
@@ -269,18 +320,31 @@ SAFETY ON
 </div>
 
 <div class="location">
+
 현재 위치<br>
 태안군 몽산포 해변
+
 </div>
 
-<button class="main-btn" onclick="showMenu()">
+<button class="main-btn"
+onclick="goScreen('screen3')">
+
 다음 단계
+
+</button>
+
+<button class="back-btn"
+onclick="goScreen('screen1')">
+
+뒤로가기
+
 </button>
 
 </div>
+
 </div>
 
-<!-- STEP3 -->
+<!-- STEP3 메뉴 -->
 
 <div class="screen" id="screen3">
 
@@ -292,131 +356,304 @@ SAFETY ON
 어떤 정보를 찾으시나요?
 </p>
 
-<button class="menu menu1" onclick="goRegion()">
+<button class="menu menu1"
+onclick="goScreen('weather')">
+
 <span class="num">1</span>
 기상정보
+
 </button>
 
-<button class="menu menu2" onclick="goRegion()">
+<button class="menu menu2"
+onclick="goScreen('mud')">
+
 <span class="num">2</span>
 해루질 위험 안내
+
 </button>
 
-<button class="menu menu3" onclick="goRegion()">
+<button class="menu menu3"
+onclick="goScreen('wave')">
+
 <span class="num">3</span>
 이안류 위험 정보
+
 </button>
 
-<button class="menu menu4" onclick="goRegion()">
+<button class="menu menu4"
+onclick="goScreen('wind')">
+
 <span class="num">4</span>
-풍향특보
+풍랑특보
+
 </button>
 
-<button class="menu menu5" onclick="goRegion()">
+<button class="menu menu5"
+onclick="goScreen('safe')">
+
 <span class="num">5</span>
 안전수칙 안내
+
 </button>
 
-<button class="sos-btn" onclick="voiceScreen()">
+<button class="sos-btn"
+onclick="goScreen('sos')">
+
 🚨 0 긴급 SOS 연결
+
+</button>
+
+<button class="back-btn"
+onclick="goScreen('screen2')">
+
+뒤로가기
+
 </button>
 
 </div>
+
 </div>
 
-<!-- STEP4 -->
+<!-- 1 기상정보 -->
 
-<div class="screen" id="screen4">
+<div class="screen" id="weather">
 
 <div class="card">
 
-<h2>지역 선택</h2>
+<h2>지역 기상정보</h2>
 
-<button class="menu menu1" onclick="showDangerScreen()">
-<span class="num">1</span>
-동해
-</button>
-
-<button class="menu menu1" onclick="showDangerScreen()">
-<span class="num">2</span>
-서해
-</button>
-
-<button class="menu menu1" onclick="showDangerScreen()">
-<span class="num">3</span>
-남해
-</button>
-
-<button class="menu menu1" onclick="showDangerScreen()">
-<span class="num">4</span>
-제주
-</button>
-
-</div>
-</div>
-
-<!-- STEP5 -->
-
-<div class="screen" id="screen5">
-
-<div class="card">
-
-<h2>AI 위험 안내</h2>
-
-<div class="warning-box">
-주의
+<div class="location">
+태안군 몽산포 해변
 </div>
 
 <div class="info">
 
 🌡 기온 : 18°C<br><br>
 💨 풍속 : 5m/s<br><br>
-🌊 파고 : 0.6m<br><br>
-☔ 강수확률 : 20%
+☔ 강수확률 : 20%<br><br>
+🌊 파고 : 0.6m
 
 </div>
 
-<div class="danger">
+<button class="main-btn"
+onclick="voiceWeather()">
 
-⚠ 만조 예정으로<br>
-1시간 후 고립 위험 가능성이 있습니다.
+음성안내
 
-</div>
+</button>
 
-<button class="main-btn" onclick="voiceScreen()">
-음성 안내 듣기
+<button class="back-btn"
+onclick="goScreen('screen3')">
+
+뒤로가기
+
 </button>
 
 </div>
+
 </div>
 
-<!-- STEP6 -->
+<!-- 2 해루질 -->
 
-<div class="screen" id="screen6">
+<div class="screen" id="mud">
 
 <div class="card">
 
-<h2>음성 안내</h2>
+<h2>해루질 위험도 안내</h2>
 
-<div class="voice-icon">
-🎤
+<div class="warning-red">
+높음
 </div>
 
-<p style="font-size:24px;line-height:2;">
+<div class="info">
 
-현재 태안 몽산포 해변은<br>
-풍속 5m/s이며<br>
-파고는 0.6m입니다.<br><br>
+⚠ 고립 위험이 높습니다.<br><br>
 
-해루질 활동 시 주의가 필요합니다.
+🕒 만조 예상 : 오후 6:20<br><br>
 
-</p>
+🌊 현재 조위 : 320cm
 
-<button class="main-btn" onclick="playVoice()">
-다시 듣기
+</div>
+
+<button class="main-btn"
+onclick="voiceMud()">
+
+음성안내
+
+</button>
+
+<button class="back-btn"
+onclick="goScreen('screen3')">
+
+뒤로가기
+
 </button>
 
 </div>
+
+</div>
+
+<!-- 3 이안류 -->
+
+<div class="screen" id="wave">
+
+<div class="card">
+
+<h2>이안류 위험 정보</h2>
+
+<div class="warning-yellow">
+주의
+</div>
+
+<div class="info">
+
+🌊 이안류 발생 가능성 있음<br><br>
+
+📍 위험 시간 : 14:00~17:00<br><br>
+
+⚠ 해안 접근 주의
+
+</div>
+
+<button class="main-btn"
+onclick="voiceWave()">
+
+음성안내
+
+</button>
+
+<button class="back-btn"
+onclick="goScreen('screen3')">
+
+뒤로가기
+
+</button>
+
+</div>
+
+</div>
+
+<!-- 4 풍랑특보 -->
+
+<div class="screen" id="wind">
+
+<div class="card">
+
+<h2>풍랑특보 현황</h2>
+
+<div class="warning-green">
+특보 없음
+</div>
+
+<div class="info">
+
+💨 바람 : 북서 5m/s<br><br>
+
+🌊 유의파고 : 0.6m<br><br>
+
+⚠ 기상상황 변화 주의
+
+</div>
+
+<button class="main-btn"
+onclick="voiceWind()">
+
+음성안내
+
+</button>
+
+<button class="back-btn"
+onclick="goScreen('screen3')">
+
+뒤로가기
+
+</button>
+
+</div>
+
+</div>
+
+<!-- 5 안전수칙 -->
+
+<div class="screen" id="safe">
+
+<div class="card">
+
+<h2>해양활동 안전수칙</h2>
+
+<div class="info">
+
+1️⃣ 기상정보 사전 확인<br><br>
+
+2️⃣ 2인 이상 활동 권장<br><br>
+
+3️⃣ 구명조끼 착용<br><br>
+
+4️⃣ 위험 시 즉시 119 신고
+
+</div>
+
+<button class="main-btn"
+onclick="voiceSafe()">
+
+음성안내
+
+</button>
+
+<button class="back-btn"
+onclick="goScreen('screen3')">
+
+뒤로가기
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SOS -->
+
+<div class="screen" id="sos">
+
+<div class="card">
+
+<h2>긴급 SOS 연결</h2>
+
+<div style="
+font-size:90px;
+color:red;
+margin-top:20px;
+">
+📞
+</div>
+
+<p style="
+font-size:60px;
+font-weight:bold;
+color:red;
+">
+119
+</p>
+
+<p style="
+font-size:24px;
+line-height:1.8;
+">
+
+위급상황 시<br>
+119로 연결됩니다.
+
+</p>
+
+<button class="back-btn"
+onclick="goScreen('screen3')">
+
+취소
+
+</button>
+
+</div>
+
 </div>
 
 <script>
@@ -429,52 +666,51 @@ screen.style.display="none";
 
 }
 
-function startSafety(){
+function goScreen(id){
 
 hideAll();
-document.getElementById("screen2").style.display="block";
+document.getElementById(id).style.display="block";
 
 }
 
-function showMenu(){
+function speak(text){
 
-hideAll();
-document.getElementById("screen3").style.display="block";
+const msg = new SpeechSynthesisUtterance(text);
 
-}
+msg.lang="ko-KR";
 
-function goRegion(){
-
-hideAll();
-document.getElementById("screen4").style.display="block";
-
-}
-
-function showDangerScreen(){
-
-hideAll();
-document.getElementById("screen5").style.display="block";
-
-}
-
-function voiceScreen(){
-
-hideAll();
-document.getElementById("screen6").style.display="block";
-
-playVoice();
-
-}
-
-function playVoice(){
-
-const msg = new SpeechSynthesisUtterance(
-"현재 태안 몽산포 해변은 풍속 5미터 퍼 세크이며 파고는 0점 6미터입니다. 해루질 활동 시 주의가 필요합니다."
-);
-
-msg.lang = "ko-KR";
-
+speechSynthesis.cancel();
 speechSynthesis.speak(msg);
+
+}
+
+function voiceWeather(){
+
+speak("현재 태안 몽산포 해변의 기온은 18도이며 풍속은 5미터 퍼 세크입니다.");
+
+}
+
+function voiceMud(){
+
+speak("현재 지역은 해루질 고립 위험이 높습니다. 만조 시간을 확인하십시오.");
+
+}
+
+function voiceWave(){
+
+speak("이안류 발생 가능성이 있습니다. 해안 접근에 주의하십시오.");
+
+}
+
+function voiceWind(){
+
+speak("현재 풍랑특보는 없습니다. 다만 기상 변화에 유의하십시오.");
+
+}
+
+function voiceSafe(){
+
+speak("해양 활동 전 기상 정보를 확인하고 반드시 구명조끼를 착용하십시오.");
 
 }
 
