@@ -41,6 +41,7 @@ border-radius:25px;
 max-width:400px;
 margin:auto;
 box-shadow:0 5px 20px rgba(0,0,0,0.1);
+margin-top:20px;
 }
 
 .fake-toggle{
@@ -105,6 +106,7 @@ background:#0b3d91;
 color:white;
 font-size:22px;
 font-weight:bold;
+width:100%;
 }
 
 .menu{
@@ -140,6 +142,7 @@ background:#eef5ff;
 padding:20px;
 border-radius:15px;
 font-size:20px;
+line-height:1.8;
 }
 
 .danger{
@@ -147,9 +150,24 @@ margin-top:20px;
 background:#fff0f0;
 padding:20px;
 border-radius:15px;
-font-size:20px;
+font-size:22px;
 color:red;
 font-weight:bold;
+line-height:1.8;
+}
+
+.voice-icon{
+font-size:80px;
+margin-top:20px;
+}
+
+.warning-box{
+background:#ffd54f;
+padding:20px;
+border-radius:20px;
+font-size:42px;
+font-weight:bold;
+margin-top:20px;
 }
 
 </style>
@@ -234,17 +252,17 @@ onclick="showMenu()">
 </p>
 
 <button class="menu blue"
-onclick="weatherInfo()">
+onclick="goRegion()">
 1 기상정보
 </button>
 
 <button class="menu orange"
-onclick="dangerInfo()">
+onclick="goRegion()">
 2 해루질 위험 안내
 </button>
 
 <button class="menu red"
-onclick="playVoice()">
+onclick="voiceScreen()">
 3 음성 브리핑
 </button>
 
@@ -252,63 +270,9 @@ onclick="playVoice()">
 0 긴급 SOS 연결
 </button>
 
-<div id="resultBox"></div>
-
 </div>
 
 </div>
-
-<script>
-
-function startSafety(){
-
-document.getElementById("screen1").style.display = "none";
-document.getElementById("screen2").style.display = "block";
-
-}
-
-function showMenu(){
-
-document.getElementById("screen2").style.display = "none";
-document.getElementById("screen3").style.display = "block";
-
-}
-
-function weatherInfo(){
-
-document.getElementById("resultBox").innerHTML = `
-<div class="info">
-🌤 기온 : 18°C<br>
-💨 풍속 : 5m/s<br>
-🌊 파고 : 0.6m
-</div>
-`;
-
-}
-
-function dangerInfo(){
-
-document.getElementById("resultBox").innerHTML = `
-<div class="danger">
-⚠ 현재 지역은 만조 예정으로
-1시간 후 고립 위험 가능성이 있습니다.
-</div>
-`;
-
-}
-
-function playVoice(){
-
-const msg = new SpeechSynthesisUtterance(
-"현재 지역은 만조 예정으로 해루질 활동 시 주의가 필요합니다."
-);
-
-msg.lang = "ko-KR";
-
-speechSynthesis.speak(msg);
-
-}
-
 
 <!-- STEP 5 -->
 
@@ -360,17 +324,8 @@ AI 위험 안내 화면
 태안군 몽산포 해변
 </h3>
 
-<div style="
-background:#ffd54f;
-padding:20px;
-border-radius:20px;
-font-size:36px;
-font-weight:bold;
-margin-top:20px;
-">
-
+<div class="warning-box">
 주의
-
 </div>
 
 <div class="info">
@@ -382,6 +337,14 @@ margin-top:20px;
 🌊 파고 : 0.6m<br><br>
 
 ☔ 강수확률 : 20%
+
+</div>
+
+<div class="danger">
+
+⚠ 현재 지역은 만조 예정으로<br>
+
+1시간 후 고립 위험 가능성이 있습니다.
 
 </div>
 
@@ -406,19 +369,13 @@ onclick="voiceScreen()">
 보이는 ARS + 음성안내
 </h2>
 
-<div style="
-font-size:60px;
-margin-top:20px;
-">
-
+<div class="voice-icon">
 🎤
-
 </div>
 
 <p style="
 font-size:22px;
 line-height:1.8;
-margin-top:20px;
 ">
 
 현재 태안 몽산포 해변은<br>
@@ -441,30 +398,67 @@ onclick="playVoice()">
 
 </div>
 
+<script>
 
-</script>
+function hideAll(){
+
+document.querySelectorAll(".screen").forEach(screen=>{
+screen.style.display="none";
+});
+
+}
+
+function startSafety(){
+
+hideAll();
+document.getElementById("screen2").style.display="block";
+
+}
+
+function showMenu(){
+
+hideAll();
+document.getElementById("screen3").style.display="block";
+
+}
+
 function goRegion(){
 
-document.getElementById("screen3").style.display = "none";
-document.getElementById("screen4").style.display = "block";
+hideAll();
+document.getElementById("screen4").style.display="block";
 
 }
 
 function showDangerScreen(){
 
-document.getElementById("screen4").style.display = "none";
-document.getElementById("screen5").style.display = "block";
+hideAll();
+document.getElementById("screen5").style.display="block";
 
 }
 
 function voiceScreen(){
 
-document.getElementById("screen5").style.display = "none";
-document.getElementById("screen6").style.display = "block";
+hideAll();
+document.getElementById("screen6").style.display="block";
 
 playVoice();
 
 }
+
+function playVoice(){
+
+const msg = new SpeechSynthesisUtterance(
+"현재 태안 몽산포 해변은 풍속 5미터 퍼 세크이며 파고는 0점6미터입니다. 해루질 활동 시 주의가 필요합니다."
+);
+
+msg.lang = "ko-KR";
+
+speechSynthesis.speak(msg);
+
+}
+
+</script>
+
 </body>
 
 </html>
