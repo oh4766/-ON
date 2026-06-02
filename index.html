@@ -3,164 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>해양안심ON</title>
 
 <style>
 
 body{
-margin:0;
-font-family:'Pretendard',sans-serif;
-background:#f4f7fb;
-color:#1a1a1a;
+    margin:0;
+    font-family:sans-serif;
+    background:#eef3fb;
+    color:#123;
 }
 
 .header{
-background:#0d47a1;
-color:white;
-padding:22px;
-font-size:34px;
-font-weight:800;
-text-align:center;
+    background:#0b3d91;
+    color:white;
+    padding:20px;
+    text-align:center;
+    font-size:32px;
+    font-weight:bold;
 }
 
-.section{
-padding:25px;
+.container{
+    padding:20px;
 }
 
 .card{
-background:white;
-border-radius:28px;
-padding:25px;
-margin-bottom:25px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    background:white;
+    border-radius:25px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom:20px;
 }
 
 .title{
-font-size:30px;
-font-weight:800;
-margin-bottom:10px;
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:10px;
 }
 
 .subtitle{
-font-size:18px;
-color:#666;
-margin-bottom:25px;
-line-height:1.6;
+    color:#666;
+    margin-bottom:20px;
 }
 
-.step{
-display:none;
-animation:fade 0.4s;
+.toggle-box{
+    text-align:center;
+    margin:30px 0;
 }
 
-.active{
-display:block;
+.switch{
+    position:relative;
+    display:inline-block;
+    width:90px;
+    height:50px;
 }
 
-@keyframes fade{
-from{opacity:0; transform:translateY(10px);}
-to{opacity:1; transform:translateY(0);}
+.switch input{
+    display:none;
 }
 
-.btn{
-width:100%;
-padding:22px;
-margin-bottom:16px;
-border:none;
-border-radius:18px;
-font-size:24px;
-font-weight:bold;
-color:white;
-cursor:pointer;
+.slider{
+    position:absolute;
+    cursor:pointer;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#ccc;
+    transition:.4s;
+    border-radius:50px;
 }
 
-.blue{background:#2f6fd6;}
-.orange{background:#ef8f2f;}
-.red{background:#db4437;}
-.green{background:#4caf50;}
-
-.mini-btn{
-background:#0d47a1;
-color:white;
-border:none;
-padding:16px;
-border-radius:14px;
-font-size:18px;
-width:100%;
-margin-top:15px;
+.slider:before{
+    position:absolute;
+    content:"";
+    height:38px;
+    width:38px;
+    left:6px;
+    bottom:6px;
+    background:white;
+    transition:.4s;
+    border-radius:50%;
 }
 
-.menu{
-background:#f4f6fa;
-padding:18px;
-border-radius:16px;
-margin-bottom:15px;
-font-size:22px;
-font-weight:700;
+input:checked + .slider{
+    background:#00b050;
+}
+
+input:checked + .slider:before{
+    transform:translateX(40px);
+}
+
+.status{
+    margin-top:15px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.on{
+    color:#00b050;
+}
+
+.off{
+    color:#888;
+}
+
+.menu-btn{
+    width:100%;
+    border:none;
+    padding:20px;
+    margin-bottom:15px;
+    border-radius:20px;
+    font-size:22px;
+    font-weight:bold;
+    color:white;
+    cursor:pointer;
+}
+
+.blue{
+    background:#1f6fe5;
+}
+
+.orange{
+    background:#f39c12;
+}
+
+.red{
+    background:#e74c3c;
+}
+
+.green{
+    background:#27ae60;
+}
+
+.info-box{
+    background:#fff3cd;
+    border-radius:20px;
+    padding:20px;
+    margin-top:20px;
+    text-align:center;
 }
 
 .warning{
-background:#fff3cd;
-padding:22px;
-border-radius:18px;
-font-size:24px;
-font-weight:bold;
-color:#856404;
-margin-bottom:20px;
+    font-size:36px;
+    color:#e67e22;
+    font-weight:bold;
 }
 
-.danger{
-background:#ffebee;
-padding:22px;
-border-radius:18px;
-font-size:24px;
-font-weight:bold;
-color:#c62828;
-margin-bottom:20px;
+.voice{
+    margin-top:20px;
+    text-align:center;
 }
 
-.safe{
-background:#e8f5e9;
-padding:22px;
-border-radius:18px;
-font-size:24px;
-font-weight:bold;
-color:#2e7d32;
-margin-bottom:20px;
-}
-
-.wave{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:8px;
-margin:30px 0;
-}
-
-.wave span{
-width:8px;
-height:40px;
-background:#2f6fd6;
-border-radius:10px;
-animation:wave 1s infinite;
-}
-
-.wave span:nth-child(2){animation-delay:0.1s;}
-.wave span:nth-child(3){animation-delay:0.2s;}
-.wave span:nth-child(4){animation-delay:0.3s;}
-.wave span:nth-child(5){animation-delay:0.4s;}
-
-@keyframes wave{
-0%{height:20px;}
-50%{height:70px;}
-100%{height:20px;}
+.voice button{
+    background:#0b3d91;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:15px;
+    font-size:20px;
+    cursor:pointer;
 }
 
 .footer{
-text-align:center;
-padding:30px;
-color:#777;
-font-size:16px;
+    text-align:center;
+    color:#666;
+    margin-top:30px;
+    margin-bottom:40px;
 }
 
 </style>
@@ -172,10 +182,9 @@ font-size:16px;
 해양안심ON
 </div>
 
-<div class="section">
+<div class="container">
 
-<!-- STEP 1 -->
-<div class="card step active" id="step1">
+<div class="card">
 
 <div class="title">
 실시간 AI 해양안전 플랫폼
@@ -185,177 +194,51 @@ font-size:16px;
 QR 기반 접근 + 보이는 ARS + AI 위험 예측
 </div>
 
-<button class="btn green" onclick="nextStep(2)">
-안전 ON 시작하기
+<div class="toggle-box">
+
+<label class="switch">
+<input type="checkbox" id="safeToggle">
+<span class="slider"></span>
+</label>
+
+<div class="status off" id="statusText">
+SAFETY OFF
+</div>
+
+</div>
+
+<button class="menu-btn blue" onclick="showWeather()">
+기상 정보
 </button>
 
-<button class="btn blue" onclick="nextStep(3)">
-기상정보 확인
-</button>
-
-<button class="btn orange" onclick="nextStep(4)">
+<button class="menu-btn orange" onclick="showDanger()">
 해루질 위험 안내
 </button>
 
-<button class="btn red" onclick="sos()">
+<button class="menu-btn red" onclick="playVoice()">
+음성 브리핑 듣기
+</button>
+
+<button class="menu-btn green">
 긴급 SOS 연결
 </button>
 
-</div>
-
-<!-- STEP 2 -->
-<div class="card step" id="step2">
-
-<div class="safe">
-✅ SAFETY ON 활성화 완료
-</div>
-
-<div class="menu">
-현재 위치<br><br>
-태안군 몽산포 해변
-</div>
-
-<div class="menu">
-최근 업데이트 : 10:30
-</div>
-
-<button class="mini-btn" onclick="nextStep(5)">
-메뉴 선택하기
-</button>
-
-</div>
-
-<!-- STEP 3 -->
-<div class="card step" id="step3">
+<div class="info-box" id="resultBox">
 
 <div class="warning">
-🌤 현재 기상정보
+현재 안전 정보를 확인하세요
 </div>
 
-<div class="menu">
-기온 : 18℃
+<p>
+해양활동 전 반드시 위험도를 확인해주세요.
+</p>
+
 </div>
 
-<div class="menu">
-풍속 : 5m/s
-</div>
-
-<div class="menu">
-파고 : 0.6m
-</div>
-
-<div class="menu">
-강수확률 : 20%
-</div>
-
-<button class="mini-btn" onclick="backHome()">
-홈으로
+<div class="voice">
+<button onclick="playVoice()">
+🔊 음성 안내 듣기
 </button>
-
-</div>
-
-<!-- STEP 4 -->
-<div class="card step" id="step4">
-
-<div class="danger">
-⚠️ AI 위험 분석 결과
-</div>
-
-<div class="menu">
-현재 조위 상승 중
-</div>
-
-<div class="menu">
-1시간 후 고립 위험 가능성 높음
-</div>
-
-<div class="menu">
-안전 활동 가능 시간<br><br>
-오전 08:00 ~ 11:30
-</div>
-
-<button class="mini-btn" onclick="nextStep(6)">
-음성 안내 듣기
-</button>
-
-</div>
-
-<!-- STEP 5 -->
-<div class="card step" id="step5">
-
-<div class="title">
-원하는 정보를 선택하세요
-</div>
-
-<div class="menu">
-1️⃣ 기상·해양 정보
-</div>
-
-<div class="menu">
-2️⃣ 해루질 위험 안내
-</div>
-
-<div class="menu">
-3️⃣ 이안류 위험 정보
-</div>
-
-<div class="menu">
-4️⃣ 안전 수칙 안내
-</div>
-
-<div class="menu">
-🚨 긴급 SOS 연결
-</div>
-
-<button class="mini-btn" onclick="backHome()">
-홈으로
-</button>
-
-</div>
-
-<!-- STEP 6 -->
-<div class="card step" id="step6">
-
-<div class="title">
-보이는 ARS + 음성 안내
-</div>
-
-<div class="wave">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</div>
-
-<div class="menu">
-현재 태안 몽산포 해변은<br><br>
-서풍이 5m/s로 불고 있으며,<br>
-파고는 0.6m입니다.<br><br>
-해루질 활동은 주의가 필요합니다.
-</div>
-
-<button class="mini-btn" onclick="nextStep(7)">
-안내 종료
-</button>
-
-</div>
-
-<!-- STEP 7 -->
-<div class="card step" id="step7">
-
-<div class="safe">
-🌊 안전 OFF 완료
-</div>
-
-<div class="menu">
-오늘도 안전한 바다 활동 되세요!
-</div>
-
-<button class="mini-btn" onclick="backHome()">
-처음으로
-</button>
-
 </div>
 
 </div>
@@ -364,32 +247,61 @@ QR 기반 접근 + 보이는 ARS + AI 위험 예측
 기상청 · 국립해양조사원 · 해양경찰청 공공데이터 기반
 </div>
 
+</div>
+
 <script>
 
-function nextStep(step){
+const toggle = document.getElementById("safeToggle");
+const statusText = document.getElementById("statusText");
 
-document.querySelectorAll('.step').forEach(function(el){
-el.classList.remove('active');
+toggle.addEventListener("change", function(){
+
+    if(this.checked){
+        statusText.innerHTML = "SAFETY ON";
+        statusText.className = "status on";
+    }else{
+        statusText.innerHTML = "SAFETY OFF";
+        statusText.className = "status off";
+    }
+
 });
 
-document.getElementById('step'+step).classList.add('active');
+function showWeather(){
 
-window.scrollTo(0,0);
+document.getElementById("resultBox").innerHTML = `
+<div class="warning">기상 정보</div>
+
+<p>기온 : 18°C</p>
+<p>풍속 : 5m/s</p>
+<p>파고 : 0.6m</p>
+<p>강수 확률 : 20%</p>
+`;
+
 }
 
-function backHome(){
+function showDanger(){
 
-document.querySelectorAll('.step').forEach(function(el){
-el.classList.remove('active');
-});
+document.getElementById("resultBox").innerHTML = `
+<div class="warning">⚠ 주의</div>
 
-document.getElementById('step1').classList.add('active');
+<p>현재 지역은 만조 예정으로</p>
+<p>1시간 후 고립 위험 가능성이 있습니다.</p>
 
-window.scrollTo(0,0);
+<p><b>해루질 활동 주의 필요</b></p>
+`;
+
 }
 
-function sos(){
-alert("긴급 상황 발생 시 119 또는 해양경찰 122로 신고하세요!");
+function playVoice(){
+
+const msg = new SpeechSynthesisUtterance(
+"현재 지역은 만조 예정으로 해루질 활동 시 주의가 필요합니다."
+);
+
+msg.lang = "ko-KR";
+
+speechSynthesis.speak(msg);
+
 }
 
 </script>
