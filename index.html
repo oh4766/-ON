@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>해양안심ON</title>
 
 <style>
@@ -18,11 +15,15 @@ text-align:center;
 }
 
 .header{
-background:#0b3d91;
-color:white;
+background:white;
 padding:20px;
-font-size:32px;
+font-size:40px;
 font-weight:bold;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.blue{
+color:#0A57FF;
 }
 
 .screen{
@@ -38,15 +39,15 @@ display:block;
 background:white;
 padding:30px;
 border-radius:25px;
-max-width:400px;
+max-width:420px;
 margin:auto;
+margin-top:25px;
 box-shadow:0 5px 20px rgba(0,0,0,0.1);
-margin-top:20px;
 }
 
 .fake-toggle{
-width:120px;
-height:60px;
+width:130px;
+height:65px;
 background:#ddd;
 border-radius:50px;
 margin:auto;
@@ -55,8 +56,8 @@ position:relative;
 
 .fake-toggle::before{
 content:'';
-width:50px;
-height:50px;
+width:55px;
+height:55px;
 background:white;
 border-radius:50%;
 position:absolute;
@@ -65,17 +66,17 @@ top:5px;
 }
 
 .toggle-on{
-width:120px;
-height:60px;
-background:#00b050;
+width:130px;
+height:65px;
+background:#1cc95b;
 border-radius:50px;
 margin:auto;
 position:relative;
 }
 
 .circle{
-width:50px;
-height:50px;
+width:55px;
+height:55px;
 background:white;
 border-radius:50%;
 position:absolute;
@@ -85,102 +86,146 @@ top:5px;
 
 .off-text{
 margin-top:15px;
-font-size:28px;
-color:#999;
+font-size:30px;
 font-weight:bold;
+color:#999;
 }
 
 .on-text{
 margin-top:15px;
-font-size:28px;
-color:#00b050;
+font-size:30px;
 font-weight:bold;
+color:#1cc95b;
 }
 
 .main-btn{
 margin-top:20px;
-padding:18px 30px;
+width:100%;
+padding:18px;
 border:none;
-border-radius:15px;
-background:#0b3d91;
+border-radius:18px;
+background:#0A57FF;
 color:white;
 font-size:22px;
 font-weight:bold;
-width:100%;
+cursor:pointer;
 }
 
 .menu{
 width:100%;
-padding:18px;
+padding:22px;
 margin-bottom:15px;
 border:none;
-border-radius:15px;
-font-size:20px;
+border-radius:18px;
+font-size:22px;
 font-weight:bold;
+display:flex;
+align-items:center;
+cursor:pointer;
+}
+
+.num{
+width:42px;
+height:42px;
+background:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-right:15px;
+font-weight:bold;
+}
+
+.menu1{
+background:#eaf2ff;
+color:#0A57FF;
+}
+
+.menu2{
+background:#fff3e2;
+color:#ff8a00;
+}
+
+.menu3{
+background:#ffeaea;
+color:#ff3b3b;
+}
+
+.menu4{
+background:#eef9ff;
+color:#00a2ff;
+}
+
+.menu5{
+background:#eefcef;
+color:#00a651;
+}
+
+.sos-btn{
+width:100%;
+padding:24px;
+border:none;
+border-radius:20px;
+background:red;
 color:white;
+font-size:28px;
+font-weight:bold;
+cursor:pointer;
 }
 
-.blue{
-background:#1f6fe5;
+.location{
+background:#f1f7ff;
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+font-size:24px;
 }
 
-.orange{
-background:#f39c12;
-}
-
-.red{
-background:#e74c3c;
-}
-
-.green{
-background:#27ae60;
+.warning-box{
+background:#ffd84d;
+padding:20px;
+border-radius:20px;
+font-size:48px;
+font-weight:bold;
+margin-top:20px;
 }
 
 .info{
-margin-top:20px;
 background:#eef5ff;
 padding:20px;
-border-radius:15px;
-font-size:20px;
-line-height:1.8;
+border-radius:20px;
+margin-top:20px;
+font-size:22px;
+line-height:2;
+text-align:left;
 }
 
 .danger{
-margin-top:20px;
 background:#fff0f0;
 padding:20px;
-border-radius:15px;
+border-radius:20px;
+margin-top:20px;
 font-size:22px;
-color:red;
 font-weight:bold;
+color:red;
 line-height:1.8;
 }
 
 .voice-icon{
-font-size:80px;
-margin-top:20px;
-}
-
-.warning-box{
-background:#ffd54f;
-padding:20px;
-border-radius:20px;
-font-size:42px;
-font-weight:bold;
+font-size:90px;
 margin-top:20px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="header">
-해양안심ON
+해양안심<span class="blue">ON</span>
 </div>
 
-<!-- STEP 2 -->
+<!-- STEP1 -->
 
 <div class="screen active" id="screen1">
 
@@ -194,52 +239,48 @@ margin-top:20px;
 SAFETY OFF
 </div>
 
-<p>
+<p style="font-size:24px;">
 안전을 켜시겠습니까?
 </p>
 
-<button class="main-btn"
-onclick="startSafety()">
+<button class="main-btn" onclick="startSafety()">
 ON 시작하기
 </button>
 
 </div>
-
 </div>
 
-<!-- STEP 3 -->
+<!-- STEP2 -->
 
 <div class="screen" id="screen2">
 
 <div class="card">
 
-<h2>해양안심ON</h2>
+<h2>
+해양안심<span class="blue">ON</span>
+</h2>
 
 <div class="toggle-on">
-
 <div class="circle"></div>
-
 </div>
 
 <div class="on-text">
 SAFETY ON
 </div>
 
-<p>
+<div class="location">
 현재 위치<br>
 태안군 몽산포 해변
-</p>
+</div>
 
-<button class="main-btn"
-onclick="showMenu()">
+<button class="main-btn" onclick="showMenu()">
 다음 단계
 </button>
 
 </div>
-
 </div>
 
-<!-- STEP 4 -->
+<!-- STEP3 -->
 
 <div class="screen" id="screen3">
 
@@ -247,34 +288,43 @@ onclick="showMenu()">
 
 <h2>보이는 ARS</h2>
 
-<p>
-원하는 정보를 선택하세요.
+<p style="font-size:24px;font-weight:bold;">
+어떤 정보를 찾으시나요?
 </p>
 
-<button class="menu blue"
-onclick="goRegion()">
-1 기상정보
+<button class="menu menu1" onclick="goRegion()">
+<span class="num">1</span>
+기상정보
 </button>
 
-<button class="menu orange"
-onclick="goRegion()">
-2 해루질 위험 안내
+<button class="menu menu2" onclick="goRegion()">
+<span class="num">2</span>
+해루질 위험 안내
 </button>
 
-<button class="menu red"
-onclick="voiceScreen()">
-3 음성 브리핑
+<button class="menu menu3" onclick="goRegion()">
+<span class="num">3</span>
+이안류 위험 정보
 </button>
 
-<button class="menu green">
-0 긴급 SOS 연결
+<button class="menu menu4" onclick="goRegion()">
+<span class="num">4</span>
+풍향특보
+</button>
+
+<button class="menu menu5" onclick="goRegion()">
+<span class="num">5</span>
+안전수칙 안내
+</button>
+
+<button class="sos-btn" onclick="voiceScreen()">
+🚨 0 긴급 SOS 연결
 </button>
 
 </div>
-
 </div>
 
-<!-- STEP 5 -->
+<!-- STEP4 -->
 
 <div class="screen" id="screen4">
 
@@ -282,47 +332,36 @@ onclick="voiceScreen()">
 
 <h2>지역 선택</h2>
 
-<p>
-지역을 선택해주세요.
-</p>
-
-<button class="menu blue"
-onclick="showDangerScreen()">
-1 동해
+<button class="menu menu1" onclick="showDangerScreen()">
+<span class="num">1</span>
+동해
 </button>
 
-<button class="menu blue"
-onclick="showDangerScreen()">
-2 서해
+<button class="menu menu1" onclick="showDangerScreen()">
+<span class="num">2</span>
+서해
 </button>
 
-<button class="menu blue"
-onclick="showDangerScreen()">
-3 남해
+<button class="menu menu1" onclick="showDangerScreen()">
+<span class="num">3</span>
+남해
 </button>
 
-<button class="menu blue"
-onclick="showDangerScreen()">
-4 제주
+<button class="menu menu1" onclick="showDangerScreen()">
+<span class="num">4</span>
+제주
 </button>
 
 </div>
-
 </div>
 
-<!-- STEP 6 -->
+<!-- STEP5 -->
 
 <div class="screen" id="screen5">
 
 <div class="card">
 
-<h2>
-AI 위험 안내 화면
-</h2>
-
-<h3>
-태안군 몽산포 해변
-</h3>
+<h2>AI 위험 안내</h2>
 
 <div class="warning-box">
 주의
@@ -331,71 +370,53 @@ AI 위험 안내 화면
 <div class="info">
 
 🌡 기온 : 18°C<br><br>
-
 💨 풍속 : 5m/s<br><br>
-
 🌊 파고 : 0.6m<br><br>
-
 ☔ 강수확률 : 20%
 
 </div>
 
 <div class="danger">
 
-⚠ 현재 지역은 만조 예정으로<br>
-
+⚠ 만조 예정으로<br>
 1시간 후 고립 위험 가능성이 있습니다.
 
 </div>
 
-<button class="main-btn"
-onclick="voiceScreen()">
-
+<button class="main-btn" onclick="voiceScreen()">
 음성 안내 듣기
-
 </button>
 
 </div>
-
 </div>
 
-<!-- STEP 7 -->
+<!-- STEP6 -->
 
 <div class="screen" id="screen6">
 
 <div class="card">
 
-<h2>
-보이는 ARS + 음성안내
-</h2>
+<h2>음성 안내</h2>
 
 <div class="voice-icon">
 🎤
 </div>
 
-<p style="
-font-size:22px;
-line-height:1.8;
-">
+<p style="font-size:24px;line-height:2;">
 
 현재 태안 몽산포 해변은<br>
-풍속 5m/s이며,<br>
+풍속 5m/s이며<br>
 파고는 0.6m입니다.<br><br>
 
-해루질 활동 시 주의가 필요하며,<br>
-만조 예정 시간은 오후 6시 20분입니다.
+해루질 활동 시 주의가 필요합니다.
 
 </p>
 
-<button class="main-btn"
-onclick="playVoice()">
-
+<button class="main-btn" onclick="playVoice()">
 다시 듣기
-
 </button>
 
 </div>
-
 </div>
 
 <script>
@@ -448,7 +469,7 @@ playVoice();
 function playVoice(){
 
 const msg = new SpeechSynthesisUtterance(
-"현재 태안 몽산포 해변은 풍속 5미터 퍼 세크이며 파고는 0점6미터입니다. 해루질 활동 시 주의가 필요합니다."
+"현재 태안 몽산포 해변은 풍속 5미터 퍼 세크이며 파고는 0점 6미터입니다. 해루질 활동 시 주의가 필요합니다."
 );
 
 msg.lang = "ko-KR";
@@ -460,5 +481,4 @@ speechSynthesis.speak(msg);
 </script>
 
 </body>
-
 </html>
