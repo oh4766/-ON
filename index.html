@@ -309,8 +309,162 @@ speechSynthesis.speak(msg);
 
 }
 
-</script>
 
+<!-- STEP 5 -->
+
+<div class="screen" id="screen4">
+
+<div class="card">
+
+<h2>지역 선택</h2>
+
+<p>
+지역을 선택해주세요.
+</p>
+
+<button class="menu blue"
+onclick="showDangerScreen()">
+1 동해
+</button>
+
+<button class="menu blue"
+onclick="showDangerScreen()">
+2 서해
+</button>
+
+<button class="menu blue"
+onclick="showDangerScreen()">
+3 남해
+</button>
+
+<button class="menu blue"
+onclick="showDangerScreen()">
+4 제주
+</button>
+
+</div>
+
+</div>
+
+<!-- STEP 6 -->
+
+<div class="screen" id="screen5">
+
+<div class="card">
+
+<h2>
+AI 위험 안내 화면
+</h2>
+
+<h3>
+태안군 몽산포 해변
+</h3>
+
+<div style="
+background:#ffd54f;
+padding:20px;
+border-radius:20px;
+font-size:36px;
+font-weight:bold;
+margin-top:20px;
+">
+
+주의
+
+</div>
+
+<div class="info">
+
+🌡 기온 : 18°C<br><br>
+
+💨 풍속 : 5m/s<br><br>
+
+🌊 파고 : 0.6m<br><br>
+
+☔ 강수확률 : 20%
+
+</div>
+
+<button class="main-btn"
+onclick="voiceScreen()">
+
+음성 안내 듣기
+
+</button>
+
+</div>
+
+</div>
+
+<!-- STEP 7 -->
+
+<div class="screen" id="screen6">
+
+<div class="card">
+
+<h2>
+보이는 ARS + 음성안내
+</h2>
+
+<div style="
+font-size:60px;
+margin-top:20px;
+">
+
+🎤
+
+</div>
+
+<p style="
+font-size:22px;
+line-height:1.8;
+margin-top:20px;
+">
+
+현재 태안 몽산포 해변은<br>
+풍속 5m/s이며,<br>
+파고는 0.6m입니다.<br><br>
+
+해루질 활동 시 주의가 필요하며,<br>
+만조 예정 시간은 오후 6시 20분입니다.
+
+</p>
+
+<button class="main-btn"
+onclick="playVoice()">
+
+다시 듣기
+
+</button>
+
+</div>
+
+</div>
+
+
+</script>
+function goRegion(){
+
+document.getElementById("screen3").style.display = "none";
+document.getElementById("screen4").style.display = "block";
+
+}
+
+function showDangerScreen(){
+
+document.getElementById("screen4").style.display = "none";
+document.getElementById("screen5").style.display = "block";
+
+}
+
+function voiceScreen(){
+
+document.getElementById("screen5").style.display = "none";
+document.getElementById("screen6").style.display = "block";
+
+playVoice();
+
+}
 </body>
 
 </html>
