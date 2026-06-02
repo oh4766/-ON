@@ -177,4 +177,222 @@ font-size:16px;
 <!-- STEP 1 -->
 <div class="card step active" id="step1">
 
-<div
+<div class="title">
+실시간 AI 해양안전 플랫폼
+</div>
+
+<div class="subtitle">
+QR 기반 접근 + 보이는 ARS + AI 위험 예측
+</div>
+
+<button class="btn green" onclick="nextStep(2)">
+안전 ON 시작하기
+</button>
+
+<button class="btn blue" onclick="nextStep(3)">
+기상정보 확인
+</button>
+
+<button class="btn orange" onclick="nextStep(4)">
+해루질 위험 안내
+</button>
+
+<button class="btn red" onclick="sos()">
+긴급 SOS 연결
+</button>
+
+</div>
+
+<!-- STEP 2 -->
+<div class="card step" id="step2">
+
+<div class="safe">
+✅ SAFETY ON 활성화 완료
+</div>
+
+<div class="menu">
+현재 위치<br><br>
+태안군 몽산포 해변
+</div>
+
+<div class="menu">
+최근 업데이트 : 10:30
+</div>
+
+<button class="mini-btn" onclick="nextStep(5)">
+메뉴 선택하기
+</button>
+
+</div>
+
+<!-- STEP 3 -->
+<div class="card step" id="step3">
+
+<div class="warning">
+🌤 현재 기상정보
+</div>
+
+<div class="menu">
+기온 : 18℃
+</div>
+
+<div class="menu">
+풍속 : 5m/s
+</div>
+
+<div class="menu">
+파고 : 0.6m
+</div>
+
+<div class="menu">
+강수확률 : 20%
+</div>
+
+<button class="mini-btn" onclick="backHome()">
+홈으로
+</button>
+
+</div>
+
+<!-- STEP 4 -->
+<div class="card step" id="step4">
+
+<div class="danger">
+⚠️ AI 위험 분석 결과
+</div>
+
+<div class="menu">
+현재 조위 상승 중
+</div>
+
+<div class="menu">
+1시간 후 고립 위험 가능성 높음
+</div>
+
+<div class="menu">
+안전 활동 가능 시간<br><br>
+오전 08:00 ~ 11:30
+</div>
+
+<button class="mini-btn" onclick="nextStep(6)">
+음성 안내 듣기
+</button>
+
+</div>
+
+<!-- STEP 5 -->
+<div class="card step" id="step5">
+
+<div class="title">
+원하는 정보를 선택하세요
+</div>
+
+<div class="menu">
+1️⃣ 기상·해양 정보
+</div>
+
+<div class="menu">
+2️⃣ 해루질 위험 안내
+</div>
+
+<div class="menu">
+3️⃣ 이안류 위험 정보
+</div>
+
+<div class="menu">
+4️⃣ 안전 수칙 안내
+</div>
+
+<div class="menu">
+🚨 긴급 SOS 연결
+</div>
+
+<button class="mini-btn" onclick="backHome()">
+홈으로
+</button>
+
+</div>
+
+<!-- STEP 6 -->
+<div class="card step" id="step6">
+
+<div class="title">
+보이는 ARS + 음성 안내
+</div>
+
+<div class="wave">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="menu">
+현재 태안 몽산포 해변은<br><br>
+서풍이 5m/s로 불고 있으며,<br>
+파고는 0.6m입니다.<br><br>
+해루질 활동은 주의가 필요합니다.
+</div>
+
+<button class="mini-btn" onclick="nextStep(7)">
+안내 종료
+</button>
+
+</div>
+
+<!-- STEP 7 -->
+<div class="card step" id="step7">
+
+<div class="safe">
+🌊 안전 OFF 완료
+</div>
+
+<div class="menu">
+오늘도 안전한 바다 활동 되세요!
+</div>
+
+<button class="mini-btn" onclick="backHome()">
+처음으로
+</button>
+
+</div>
+
+</div>
+
+<div class="footer">
+기상청 · 국립해양조사원 · 해양경찰청 공공데이터 기반
+</div>
+
+<script>
+
+function nextStep(step){
+
+document.querySelectorAll('.step').forEach(function(el){
+el.classList.remove('active');
+});
+
+document.getElementById('step'+step).classList.add('active');
+
+window.scrollTo(0,0);
+}
+
+function backHome(){
+
+document.querySelectorAll('.step').forEach(function(el){
+el.classList.remove('active');
+});
+
+document.getElementById('step1').classList.add('active');
+
+window.scrollTo(0,0);
+}
+
+function sos(){
+alert("긴급 상황 발생 시 119 또는 해양경찰 122로 신고하세요!");
+}
+
+</script>
+
+</body>
+</html>
