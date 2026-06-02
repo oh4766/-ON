@@ -6,11 +6,11 @@
 <title>해양안심ON</title>
 
 <style>
+
 body{
 margin:0;
 font-family:sans-serif;
 background:#f4f8fc;
-text-align:center;
 color:#123;
 }
 
@@ -20,43 +20,72 @@ color:white;
 padding:20px;
 font-size:32px;
 font-weight:bold;
+text-align:center;
 }
 
-.main{
-padding:30px;
-}
-
-.qrbox{
-background:white;
+.container{
 padding:20px;
-border-radius:20px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-display:inline-block;
-margin-top:20px;
 }
 
-.btn{
+.card{
+background:white;
+border-radius:20px;
+padding:20px;
+margin-bottom:20px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.title{
+font-size:28px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.subtitle{
+font-size:18px;
+color:#555;
+margin-bottom:20px;
+}
+
+.button{
 display:block;
-width:250px;
-margin:15px auto;
-padding:15px;
-border-radius:15px;
-text-decoration:none;
-font-size:20px;
+width:100%;
+padding:20px;
+border:none;
+border-radius:16px;
+font-size:24px;
 font-weight:bold;
 color:white;
+margin-bottom:15px;
 }
 
-.blue{background:#1976d2;}
-.orange{background:#fb8c00;}
-.red{background:#e53935;}
-.green{background:#43a047;}
+.blue{background:#2f6fd6;}
+.orange{background:#ef8f2f;}
+.red{background:#d94a3a;}
+.green{background:#58a84f;}
+
+.info{
+font-size:20px;
+line-height:1.8;
+}
+
+.warning{
+background:#fff3cd;
+border-radius:16px;
+padding:20px;
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+color:#856404;
+}
 
 .footer{
-margin-top:40px;
-font-size:14px;
+text-align:center;
+font-size:16px;
+padding:30px;
 color:#666;
 }
+
 </style>
 </head>
 
@@ -66,23 +95,41 @@ color:#666;
 해양안심ON
 </div>
 
-<div class="main">
+<div class="container">
 
-<h2>실시간 AI 해양안전 플랫폼</h2>
+<div class="card">
 
-<p>
+<div class="title">
+실시간 AI 해양안전 플랫폼
+</div>
+
+<div class="subtitle">
 QR 기반 접근 + 보이는 ARS + AI 위험 예측
-</p>
+</div>
 
-<div class="qrbox">
+<button class="button blue"
+onclick="weather()">
+기상정보
+</button>
 
-<a class="btn blue">기상정보</a>
+<button class="button orange"
+onclick="danger()">
+해루질 위험 안내
+</button>
 
-<a class="btn orange">해루질 위험 안내</a>
+<button class="button red"
+onclick="sos()">
+긴급 SOS 연결
+</button>
 
-<a class="btn red">긴급 SOS 연결</a>
+<button class="button green"
+onclick="safeon()">
+안전 ON 시작하기
+</button>
 
-<a class="btn green">안전 ON 시작하기</a>
+<div id="result"></div>
+
+</div>
 
 </div>
 
@@ -90,7 +137,47 @@ QR 기반 접근 + 보이는 ARS + AI 위험 예측
 기상청 · 국립해양조사원 · 해양경찰청 공공데이터 기반
 </div>
 
+<script>
+
+function weather(){
+document.getElementById("result").innerHTML =
+`
+<div class="warning">
+현재 태안군 풍산포 해변<br><br>
+기온 18℃<br>
+풍속 5m/s<br>
+파고 0.6m<br>
+강수확률 20%
 </div>
+`;
+}
+
+function danger(){
+document.getElementById("result").innerHTML =
+`
+<div class="warning">
+⚠️ AI 위험 분석 결과<br><br>
+현재 조위 상승 중으로<br>
+1시간 후 고립 위험 가능성이 높습니다.
+</div>
+`;
+}
+
+function sos(){
+alert("긴급 상황 발생 시 119 또는 해양경찰 122로 신고하세요!");
+}
+
+function safeon(){
+document.getElementById("result").innerHTML =
+`
+<div class="warning">
+✅ 안전 ON 활성화 완료<br><br>
+현재 위치 기반 안전 모니터링이 시작되었습니다.
+</div>
+`;
+}
+
+</script>
 
 </body>
 </html>
