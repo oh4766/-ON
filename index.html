@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,171 +11,149 @@
 <style>
 
 body{
-    margin:0;
-    font-family:sans-serif;
-    background:#eef3fb;
-    color:#123;
+margin:0;
+font-family:sans-serif;
+background:#eef3fb;
+text-align:center;
 }
 
 .header{
-    background:#0b3d91;
-    color:white;
-    padding:20px;
-    text-align:center;
-    font-size:32px;
-    font-weight:bold;
+background:#0b3d91;
+color:white;
+padding:20px;
+font-size:32px;
+font-weight:bold;
 }
 
-.container{
-    padding:20px;
+.screen{
+display:none;
+padding:20px;
+}
+
+.active{
+display:block;
 }
 
 .card{
-    background:white;
-    border-radius:25px;
-    padding:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    margin-bottom:20px;
+background:white;
+padding:30px;
+border-radius:25px;
+max-width:400px;
+margin:auto;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
 }
 
-.title{
-    font-size:28px;
-    font-weight:bold;
-    margin-bottom:10px;
+.fake-toggle{
+width:120px;
+height:60px;
+background:#ddd;
+border-radius:50px;
+margin:auto;
+position:relative;
 }
 
-.subtitle{
-    color:#666;
-    margin-bottom:20px;
+.fake-toggle::before{
+content:'';
+width:50px;
+height:50px;
+background:white;
+border-radius:50%;
+position:absolute;
+left:5px;
+top:5px;
 }
 
-.toggle-box{
-    text-align:center;
-    margin:30px 0;
+.toggle-on{
+width:120px;
+height:60px;
+background:#00b050;
+border-radius:50px;
+margin:auto;
+position:relative;
 }
 
-.switch{
-    position:relative;
-    display:inline-block;
-    width:90px;
-    height:50px;
+.circle{
+width:50px;
+height:50px;
+background:white;
+border-radius:50%;
+position:absolute;
+right:5px;
+top:5px;
 }
 
-.switch input{
-    display:none;
+.off-text{
+margin-top:15px;
+font-size:28px;
+color:#999;
+font-weight:bold;
 }
 
-.slider{
-    position:absolute;
-    cursor:pointer;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background:#ccc;
-    transition:.4s;
-    border-radius:50px;
+.on-text{
+margin-top:15px;
+font-size:28px;
+color:#00b050;
+font-weight:bold;
 }
 
-.slider:before{
-    position:absolute;
-    content:"";
-    height:38px;
-    width:38px;
-    left:6px;
-    bottom:6px;
-    background:white;
-    transition:.4s;
-    border-radius:50%;
+.main-btn{
+margin-top:20px;
+padding:18px 30px;
+border:none;
+border-radius:15px;
+background:#0b3d91;
+color:white;
+font-size:22px;
+font-weight:bold;
 }
 
-input:checked + .slider{
-    background:#00b050;
-}
-
-input:checked + .slider:before{
-    transform:translateX(40px);
-}
-
-.status{
-    margin-top:15px;
-    font-size:28px;
-    font-weight:bold;
-}
-
-.on{
-    color:#00b050;
-}
-
-.off{
-    color:#888;
-}
-
-.menu-btn{
-    width:100%;
-    border:none;
-    padding:20px;
-    margin-bottom:15px;
-    border-radius:20px;
-    font-size:22px;
-    font-weight:bold;
-    color:white;
-    cursor:pointer;
+.menu{
+width:100%;
+padding:18px;
+margin-bottom:15px;
+border:none;
+border-radius:15px;
+font-size:20px;
+font-weight:bold;
+color:white;
 }
 
 .blue{
-    background:#1f6fe5;
+background:#1f6fe5;
 }
 
 .orange{
-    background:#f39c12;
+background:#f39c12;
 }
 
 .red{
-    background:#e74c3c;
+background:#e74c3c;
 }
 
 .green{
-    background:#27ae60;
+background:#27ae60;
 }
 
-.info-box{
-    background:#fff3cd;
-    border-radius:20px;
-    padding:20px;
-    margin-top:20px;
-    text-align:center;
+.info{
+margin-top:20px;
+background:#eef5ff;
+padding:20px;
+border-radius:15px;
+font-size:20px;
 }
 
-.warning{
-    font-size:36px;
-    color:#e67e22;
-    font-weight:bold;
-}
-
-.voice{
-    margin-top:20px;
-    text-align:center;
-}
-
-.voice button{
-    background:#0b3d91;
-    color:white;
-    border:none;
-    padding:15px 30px;
-    border-radius:15px;
-    font-size:20px;
-    cursor:pointer;
-}
-
-.footer{
-    text-align:center;
-    color:#666;
-    margin-top:30px;
-    margin-bottom:40px;
+.danger{
+margin-top:20px;
+background:#fff0f0;
+padding:20px;
+border-radius:15px;
+font-size:20px;
+color:red;
+font-weight:bold;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -182,112 +162,137 @@ input:checked + .slider:before{
 해양안심ON
 </div>
 
-<div class="container">
+<!-- STEP 2 -->
+
+<div class="screen active" id="screen1">
 
 <div class="card">
 
-<div class="title">
-실시간 AI 해양안전 플랫폼
-</div>
+<h2>서비스 접속</h2>
 
-<div class="subtitle">
-QR 기반 접근 + 보이는 ARS + AI 위험 예측
-</div>
+<div class="fake-toggle"></div>
 
-<div class="toggle-box">
-
-<label class="switch">
-<input type="checkbox" id="safeToggle">
-<span class="slider"></span>
-</label>
-
-<div id="statusText">
+<div class="off-text">
 SAFETY OFF
 </div>
 
+<p>
+안전을 켜시겠습니까?
+</p>
+
+<button class="main-btn"
+onclick="startSafety()">
+ON 시작하기
+</button>
+
 </div>
 
-<button class="menu-btn blue" onclick="showWeather()">
-기상 정보
-</button>
+</div>
 
-<button class="menu-btn orange" onclick="showDanger()">
-해루질 위험 안내
-</button>
+<!-- STEP 3 -->
 
-<button class="menu-btn red" onclick="playVoice()">
-음성 브리핑 듣기
-</button>
+<div class="screen" id="screen2">
 
-<button class="menu-btn green">
-긴급 SOS 연결
-</button>
+<div class="card">
 
-<div class="info-box" id="resultBox">
+<h2>해양안심ON</h2>
 
-<div class="warning">
-현재 안전 정보를 확인하세요
+<div class="toggle-on">
+
+<div class="circle"></div>
+
+</div>
+
+<div class="on-text">
+SAFETY ON
 </div>
 
 <p>
-해양활동 전 반드시 위험도를 확인해주세요.
+현재 위치<br>
+태안군 몽산포 해변
 </p>
 
-</div>
-
-<div class="voice">
-<button onclick="playVoice()">
-🔊 음성 안내 듣기
+<button class="main-btn"
+onclick="showMenu()">
+다음 단계
 </button>
-</div>
 
 </div>
 
-<div class="footer">
-기상청 · 국립해양조사원 · 해양경찰청 공공데이터 기반
+</div>
+
+<!-- STEP 4 -->
+
+<div class="screen" id="screen3">
+
+<div class="card">
+
+<h2>보이는 ARS</h2>
+
+<p>
+원하는 정보를 선택하세요.
+</p>
+
+<button class="menu blue"
+onclick="weatherInfo()">
+1 기상정보
+</button>
+
+<button class="menu orange"
+onclick="dangerInfo()">
+2 해루질 위험 안내
+</button>
+
+<button class="menu red"
+onclick="playVoice()">
+3 음성 브리핑
+</button>
+
+<button class="menu green">
+0 긴급 SOS 연결
+</button>
+
+<div id="resultBox"></div>
+
 </div>
 
 </div>
 
 <script>
 
-const toggle = document.getElementById("safeToggle");
-const statusText = document.getElementById("statusText");
+function startSafety(){
 
-toggle.addEventListener("change", function(){
+document.getElementById("screen1").style.display = "none";
+document.getElementById("screen2").style.display = "block";
 
-    if(this.checked){
-        statusText.innerHTML = "SAFETY ON";
-        statusText.className = "status on";
-    }else{
-        statusText.innerHTML = "SAFETY OFF";
-        statusText.className = "status off";
-    }
+}
 
-});
+function showMenu(){
 
-function showWeather(){
+document.getElementById("screen2").style.display = "none";
+document.getElementById("screen3").style.display = "block";
+
+}
+
+function weatherInfo(){
 
 document.getElementById("resultBox").innerHTML = `
-<div class="warning">기상 정보</div>
-
-<p>기온 : 18°C</p>
-<p>풍속 : 5m/s</p>
-<p>파고 : 0.6m</p>
-<p>강수 확률 : 20%</p>
+<div class="info">
+🌤 기온 : 18°C<br>
+💨 풍속 : 5m/s<br>
+🌊 파고 : 0.6m
+</div>
 `;
 
 }
 
-function showDanger(){
+function dangerInfo(){
 
 document.getElementById("resultBox").innerHTML = `
-<div class="warning">⚠ 주의</div>
-
-<p>현재 지역은 만조 예정으로</p>
-<p>1시간 후 고립 위험 가능성이 있습니다.</p>
-
-<p><b>해루질 활동 주의 필요</b></p>
+<div class="danger">
+⚠ 현재 지역은 만조 예정으로
+1시간 후 고립 위험 가능성이 있습니다.
+</div>
 `;
 
 }
@@ -305,39 +310,7 @@ speechSynthesis.speak(msg);
 }
 
 </script>
-<script>
 
-const toggle = document.getElementById("safeToggle");
-const statusText = document.getElementById("statusText");
-
-toggle.addEventListener("change", function(){
-
-if(this.checked){
-
-statusText.innerHTML = "SAFETY ON";
-statusText.style.color = "#00b050";
-
-}else{
-
-statusText.innerHTML = "SAFETY OFF";
-statusText.style.color = "#888";
-
-}
-
-});
-
-function playVoice(){
-
-const msg = new SpeechSynthesisUtterance(
-"현재 지역은 만조 예정으로 해루질 활동 시 주의가 필요합니다."
-);
-
-msg.lang = "ko-KR";
-
-speechSynthesis.speak(msg);
-
-}
-
-</script>
 </body>
+
 </html>
