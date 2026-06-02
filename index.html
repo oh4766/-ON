@@ -9,81 +9,158 @@
 
 body{
 margin:0;
-font-family:sans-serif;
-background:#f4f8fc;
-color:#123;
+font-family:'Pretendard',sans-serif;
+background:#f4f7fb;
+color:#1a1a1a;
 }
 
 .header{
 background:#0d47a1;
 color:white;
-padding:20px;
-font-size:32px;
-font-weight:bold;
+padding:22px;
+font-size:34px;
+font-weight:800;
 text-align:center;
 }
 
-.container{
-padding:20px;
+.section{
+padding:25px;
 }
 
 .card{
 background:white;
-border-radius:20px;
-padding:20px;
-margin-bottom:20px;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
+border-radius:28px;
+padding:25px;
+margin-bottom:25px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
 .title{
-font-size:28px;
-font-weight:bold;
+font-size:30px;
+font-weight:800;
 margin-bottom:10px;
 }
 
 .subtitle{
 font-size:18px;
-color:#555;
-margin-bottom:20px;
+color:#666;
+margin-bottom:25px;
+line-height:1.6;
 }
 
-.button{
+.step{
+display:none;
+animation:fade 0.4s;
+}
+
+.active{
 display:block;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(10px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+.btn{
 width:100%;
-padding:20px;
+padding:22px;
+margin-bottom:16px;
 border:none;
-border-radius:16px;
+border-radius:18px;
 font-size:24px;
 font-weight:bold;
 color:white;
-margin-bottom:15px;
+cursor:pointer;
 }
 
 .blue{background:#2f6fd6;}
 .orange{background:#ef8f2f;}
-.red{background:#d94a3a;}
-.green{background:#58a84f;}
+.red{background:#db4437;}
+.green{background:#4caf50;}
 
-.info{
-font-size:20px;
-line-height:1.8;
+.mini-btn{
+background:#0d47a1;
+color:white;
+border:none;
+padding:16px;
+border-radius:14px;
+font-size:18px;
+width:100%;
+margin-top:15px;
+}
+
+.menu{
+background:#f4f6fa;
+padding:18px;
+border-radius:16px;
+margin-bottom:15px;
+font-size:22px;
+font-weight:700;
 }
 
 .warning{
 background:#fff3cd;
-border-radius:16px;
-padding:20px;
-margin-top:20px;
-font-size:22px;
+padding:22px;
+border-radius:18px;
+font-size:24px;
 font-weight:bold;
 color:#856404;
+margin-bottom:20px;
+}
+
+.danger{
+background:#ffebee;
+padding:22px;
+border-radius:18px;
+font-size:24px;
+font-weight:bold;
+color:#c62828;
+margin-bottom:20px;
+}
+
+.safe{
+background:#e8f5e9;
+padding:22px;
+border-radius:18px;
+font-size:24px;
+font-weight:bold;
+color:#2e7d32;
+margin-bottom:20px;
+}
+
+.wave{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+margin:30px 0;
+}
+
+.wave span{
+width:8px;
+height:40px;
+background:#2f6fd6;
+border-radius:10px;
+animation:wave 1s infinite;
+}
+
+.wave span:nth-child(2){animation-delay:0.1s;}
+.wave span:nth-child(3){animation-delay:0.2s;}
+.wave span:nth-child(4){animation-delay:0.3s;}
+.wave span:nth-child(5){animation-delay:0.4s;}
+
+@keyframes wave{
+0%{height:20px;}
+50%{height:70px;}
+100%{height:20px;}
 }
 
 .footer{
 text-align:center;
-font-size:16px;
 padding:30px;
-color:#666;
+color:#777;
+font-size:16px;
 }
 
 </style>
@@ -95,89 +172,9 @@ color:#666;
 해양안심ON
 </div>
 
-<div class="container">
+<div class="section">
 
-<div class="card">
+<!-- STEP 1 -->
+<div class="card step active" id="step1">
 
-<div class="title">
-실시간 AI 해양안전 플랫폼
-</div>
-
-<div class="subtitle">
-QR 기반 접근 + 보이는 ARS + AI 위험 예측
-</div>
-
-<button class="button blue"
-onclick="weather()">
-기상정보
-</button>
-
-<button class="button orange"
-onclick="danger()">
-해루질 위험 안내
-</button>
-
-<button class="button red"
-onclick="sos()">
-긴급 SOS 연결
-</button>
-
-<button class="button green"
-onclick="safeon()">
-안전 ON 시작하기
-</button>
-
-<div id="result"></div>
-
-</div>
-
-</div>
-
-<div class="footer">
-기상청 · 국립해양조사원 · 해양경찰청 공공데이터 기반
-</div>
-
-<script>
-
-function weather(){
-document.getElementById("result").innerHTML =
-`
-<div class="warning">
-현재 태안군 풍산포 해변<br><br>
-기온 18℃<br>
-풍속 5m/s<br>
-파고 0.6m<br>
-강수확률 20%
-</div>
-`;
-}
-
-function danger(){
-document.getElementById("result").innerHTML =
-`
-<div class="warning">
-⚠️ AI 위험 분석 결과<br><br>
-현재 조위 상승 중으로<br>
-1시간 후 고립 위험 가능성이 높습니다.
-</div>
-`;
-}
-
-function sos(){
-alert("긴급 상황 발생 시 119 또는 해양경찰 122로 신고하세요!");
-}
-
-function safeon(){
-document.getElementById("result").innerHTML =
-`
-<div class="warning">
-✅ 안전 ON 활성화 완료<br><br>
-현재 위치 기반 안전 모니터링이 시작되었습니다.
-</div>
-`;
-}
-
-</script>
-
-</body>
-</html>
+<div
