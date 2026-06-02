@@ -201,7 +201,7 @@ QR 기반 접근 + 보이는 ARS + AI 위험 예측
 <span class="slider"></span>
 </label>
 
-<div class="status off" id="statusText">
+<div id="statusText">
 SAFETY OFF
 </div>
 
@@ -305,6 +305,39 @@ speechSynthesis.speak(msg);
 }
 
 </script>
+<script>
 
+const toggle = document.getElementById("safeToggle");
+const statusText = document.getElementById("statusText");
+
+toggle.addEventListener("change", function(){
+
+if(this.checked){
+
+statusText.innerHTML = "SAFETY ON";
+statusText.style.color = "#00b050";
+
+}else{
+
+statusText.innerHTML = "SAFETY OFF";
+statusText.style.color = "#888";
+
+}
+
+});
+
+function playVoice(){
+
+const msg = new SpeechSynthesisUtterance(
+"현재 지역은 만조 예정으로 해루질 활동 시 주의가 필요합니다."
+);
+
+msg.lang = "ko-KR";
+
+speechSynthesis.speak(msg);
+
+}
+
+</script>
 </body>
 </html>
